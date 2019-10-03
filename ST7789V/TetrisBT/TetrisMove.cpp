@@ -516,41 +516,203 @@ TetrisMove::moveRightShape(Shape *shape, World *world)
 bool
 TetrisMove::moveRightIShape(Shape *iShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(iShape->shapeRot)
+  {
+    case deg0:
+      if(!world->grid[iShape->pos[3].x / BOX_SCALE][iShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg90:
+    case deg270:
+      if(!world->grid[iShape->pos[0].x / BOX_SCALE][iShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[iShape->pos[1].x / BOX_SCALE][iShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[iShape->pos[2].x / BOX_SCALE][iShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[iShape->pos[3].x / BOX_SCALE][iShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg180:
+      if(!world->grid[iShape->pos[1].x / BOX_SCALE][iShape->pos[1].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
 
 bool
 TetrisMove::moveRightLShape(Shape *lShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(lShape->shapeRot)
+  {
+    case deg0:
+      if(!world->grid[lShape->pos[2].x / BOX_SCALE][lShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[lShape->pos[3].x / BOX_SCALE][lShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg90:
+      if(!world->grid[lShape->pos[0].x / BOX_SCALE][lShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[lShape->pos[2].x / BOX_SCALE][lShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[lShape->pos[3].x / BOX_SCALE][lShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg180:
+      if(!world->grid[lShape->pos[1].x / BOX_SCALE][lShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[lShape->pos[2].x / BOX_SCALE][lShape->pos[2].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg270:
+      if(!world->grid[lShape->pos[0].x / BOX_SCALE][lShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[lShape->pos[1].x / BOX_SCALE][lShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[lShape->pos[3].x / BOX_SCALE][lShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
 
 bool
 TetrisMove::moveRightJShape(Shape *jShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(jShape->shapeRot)
+  {
+    case deg0:
+      if(!world->grid[jShape->pos[1].x / BOX_SCALE][jShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[jShape->pos[2].x / BOX_SCALE][jShape->pos[2].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg90:
+      if(!world->grid[jShape->pos[0].x / BOX_SCALE][jShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[jShape->pos[2].x / BOX_SCALE][jShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[jShape->pos[3].x / BOX_SCALE][jShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg180:
+      if(!world->grid[jShape->pos[2].x / BOX_SCALE][jShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[jShape->pos[3].x / BOX_SCALE][jShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg270:
+      if(!world->grid[jShape->pos[0].x / BOX_SCALE][jShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[jShape->pos[1].x / BOX_SCALE][jShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[jShape->pos[3].x / BOX_SCALE][jShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
 
 bool
 TetrisMove::moveRightOShape(Shape *oShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(oShape->shapeRot)
+  {
+    case deg0:
+    case deg90:
+    case deg180:
+    case deg270:
+      if(!world->grid[oShape->pos[2].x / BOX_SCALE][oShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[oShape->pos[3].x / BOX_SCALE][oShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
 
 bool
 TetrisMove::moveRightSShape(Shape *sShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(sShape->shapeRot)
+  {
+    case deg0:
+      if(!world->grid[sShape->pos[0].x / BOX_SCALE][sShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[sShape->pos[3].x / BOX_SCALE][sShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg90:
+      if(!world->grid[sShape->pos[1].x / BOX_SCALE][sShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[sShape->pos[2].x / BOX_SCALE][sShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[sShape->pos[3].x / BOX_SCALE][sShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg180:
+      if(!world->grid[sShape->pos[1].x / BOX_SCALE][sShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[sShape->pos[2].x / BOX_SCALE][sShape->pos[2].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg270:
+      if(!world->grid[sShape->pos[0].x / BOX_SCALE][sShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[sShape->pos[1].x / BOX_SCALE][sShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[sShape->pos[3].x / BOX_SCALE][sShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
 
 bool
 TetrisMove::moveRightTShape(Shape *tShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(tShape->shapeRot)
+  {
+    case deg0:
+      if(!world->grid[tShape->pos[2].x / BOX_SCALE][tShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[tShape->pos[3].x / BOX_SCALE][tShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg90:
+      if(!world->grid[tShape->pos[1].x / BOX_SCALE][tShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[tShape->pos[2].x / BOX_SCALE][tShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[tShape->pos[3].x / BOX_SCALE][tShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg180:
+      if(!world->grid[tShape->pos[1].x / BOX_SCALE][tShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[tShape->pos[2].x / BOX_SCALE][tShape->pos[2].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg270:
+      if(!world->grid[tShape->pos[0].x / BOX_SCALE][tShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[tShape->pos[1].x / BOX_SCALE][tShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[tShape->pos[3].x / BOX_SCALE][tShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
 
 bool
 TetrisMove::moveRightZShape(Shape *zShape, World *world)
 {
-  
+  bool canMove = false;
+  switch(zShape->shapeRot)
+  {
+    case deg0:
+      if(!world->grid[zShape->pos[1].x / BOX_SCALE][zShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[zShape->pos[3].x / BOX_SCALE][zShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg90:
+      if(!world->grid[zShape->pos[1].x / BOX_SCALE][zShape->pos[1].y / BOX_SCALE + 1] &&
+         !world->grid[zShape->pos[2].x / BOX_SCALE][zShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[zShape->pos[3].x / BOX_SCALE][zShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg180:
+      if(!world->grid[zShape->pos[0].x / BOX_SCALE][zShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[zShape->pos[2].x / BOX_SCALE][zShape->pos[2].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+    case deg270:
+      if(!world->grid[zShape->pos[0].x / BOX_SCALE][zShape->pos[0].y / BOX_SCALE + 1] &&
+         !world->grid[zShape->pos[2].x / BOX_SCALE][zShape->pos[2].y / BOX_SCALE + 1] &&
+         !world->grid[zShape->pos[3].x / BOX_SCALE][zShape->pos[3].y / BOX_SCALE + 1])
+             canMove = true;
+      break;
+  }
+  return canMove;
 }
