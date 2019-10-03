@@ -1,6 +1,8 @@
 #ifndef _TETRISBT_TETRIS
 #define _TETRISBT_TETRIS
 
+#include <TFT_eSPI.h>
+
 #define MAX_BOX_X 13
 #define MAX_BOX_Y 22
 
