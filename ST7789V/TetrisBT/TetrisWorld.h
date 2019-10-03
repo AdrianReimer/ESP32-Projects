@@ -14,7 +14,8 @@ class TetrisWorld {
     World world;
   public:
     TetrisWorld(TFT_eSPI *tft);
-    void drawFrame();
+    void initFrame();
+    void drawWorld();
     World* getWorld();
 };
 

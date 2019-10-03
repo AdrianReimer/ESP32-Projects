@@ -1,7 +1,7 @@
 #ifndef _TETRISBT_TETRIS
 #define _TETRISBT_TETRIS
 
-#define MAX_BOX_X 14
+#define MAX_BOX_X 13
 #define MAX_BOX_Y 22
 
 typedef enum {
@@ -33,7 +33,7 @@ typedef struct {
 } Shape;
 
 typedef struct {
-  Shape *grid[MAX_BOX_X][MAX_BOX_Y] = {{0}};
+  Shape *grid[MAX_BOX_X][MAX_BOX_Y] = {};
 } World;
 
 #endif

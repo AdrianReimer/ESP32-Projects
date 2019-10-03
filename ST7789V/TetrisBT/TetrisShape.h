@@ -5,7 +5,7 @@
 #include "Tetris.h"
 
 #define BOX_SCALE 10
-#define FRAME_BOX_COLOR TFT_WHITE
+#define FRAME_BOX_COLOR WHITE
 
 typedef enum {
   P1, P2
@@ -14,8 +14,9 @@ typedef enum {
 class TetrisShape
 {
   public:
-    Shape* createShape(Tetromino tet, unsigned int color, Player player);
+    Shape* createShape(Tetromino tet, ShapeColor color, Player player);
     void rotShape(Shape *shape, World *world);
+    bool moveDownShape(Shape *shape, World *world);
   private:
     void createIShape(Shape *iShape, Player player);
     void createLShape(Shape *lShape, Player player);
@@ -27,10 +28,16 @@ class TetrisShape
     void rotIShape(Shape *iShape, World *world);
     void rotLShape(Shape *lShape, World *world);
     void rotJShape(Shape *jShape, World *world);
-    void rotOShape(Shape *oShape, World *world);
     void rotSShape(Shape *sShape, World *world);
     void rotTShape(Shape *tShape, World *world);
     void rotZShape(Shape *zShape, World *world);
+    bool moveDownIShape(Shape *iShape, World *world);
+    bool moveDownLShape(Shape *lShape, World *world);
+    bool moveDownJShape(Shape *jShape, World *world);
+    bool moveDownOShape(Shape *oShape, World *world);
+    bool moveDownSShape(Shape *sShape, World *world);
+    bool moveDownTShape(Shape *tShape, World *world);
+    bool moveDownZShape(Shape *zShape, World *world);
 };
 
 #endif
