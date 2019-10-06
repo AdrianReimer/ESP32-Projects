@@ -2,34 +2,34 @@
 #include "TetrisWorld.h"
 
 
-Shape*
+Shape
 TetrisShape::createShape(Tetromino tet, ShapeColor color, Player player)
 {
-  Shape *shape = (Shape *)malloc(sizeof(Shape));;
-  shape->tet = tet;
-  shape->color = color;
-  shape->shapeRot = deg0;
+  Shape shape;
+  shape.tet = tet;
+  shape.color = color;
+  shape.shapeRot = deg0;
   switch(tet) {
     case I:
-      createIShape(shape, player);
+      createIShape(&shape, player);
       break;
     case L:
-      createLShape(shape, player);
+      createLShape(&shape, player);
       break;
     case J:
-      createJShape(shape, player);
+      createJShape(&shape, player);
       break;
     case O:
-      createOShape(shape, player);
+      createOShape(&shape, player);
       break;
     case S:
-      createSShape(shape, player);
+      createSShape(&shape, player);
       break;
     case T:
-      createTShape(shape, player);
+      createTShape(&shape, player);
       break;
     case Z:
-      createZShape(shape, player);
+      createZShape(&shape, player);
       break;
   }
   return shape;
@@ -201,4 +201,28 @@ TetrisShape::createZShape(Shape *zShape, Player player)
     zShape->pos[3].x = ROOT_POS_X;
     zShape->pos[3].y = P2_ROOT_POS_Y + BOX_SCALE;
   }
+}
+
+Shape
+TetrisShape::createRndShape(Player player)
+{
+  long rndColor = random(5);
+  switch(rndColor) {
+    case 0:
+      rndColor = RED;
+      break;
+    case 1:
+      rndColor = GREEN;
+      break;
+    case 2:
+      rndColor = BLUE;
+      break; 
+    case 3:
+      rndColor = CYAN;
+      break;
+    case 4:
+      rndColor = MAGENTA;
+      break;
+  }
+  return createShape((Tetromino)random(Z + 1), (ShapeColor)rndColor, player);
 }

@@ -15,7 +15,8 @@ typedef enum {
 class TetrisShape
 {
   public:
-    Shape* createShape(Tetromino tet, ShapeColor color, Player player);
+    Shape createShape(Tetromino tet, ShapeColor color, Player player);
+    Shape createRndShape(Player player);
   private:
     void createIShape(Shape *iShape, Player player);
     void createLShape(Shape *lShape, Player player);

@@ -13,12 +13,23 @@ class TetrisWorld {
   private:
     TFT_eSPI *tft;
     World world;
+    Shape shape;
+    int p1Score;
+    int p2Score;
+    
+    int checkHorizontal();
+    int checkVertical();
+    void cleanWorld(int y1, int y2);
+    void printScore();
+    void resetWorld();
   public:
     TetrisWorld(TFT_eSPI *tft);
     void initFrame();
-    void drawWorld();
+    void drawWorld(Shape *shape);
+    void checkWorld();
     World* getWorld();
+    void setShape(Shape shape);
+    Shape* getShape();
 };
-
 
 #endif
