@@ -204,25 +204,36 @@ TetrisShape::createZShape(Shape *zShape, Player player)
 }
 
 Shape
-TetrisShape::createRndShape(Player player)
+TetrisShape::createRndShape(Player player, uint8_t* buffer)
 {
   long rndColor = random(5);
-  switch(rndColor) {
+  buffer[2] = rndColor;
+  rndColor = numToColor(rndColor);
+  Tetromino tet = (Tetromino)random(7);
+  buffer[1] = tet;
+  return createShape(tet, (ShapeColor)rndColor, player);
+}
+
+ShapeColor
+TetrisShape::numToColor(uint8_t num)
+{
+  ShapeColor color;
+  switch(num) {
     case 0:
-      rndColor = RED;
+      color = RED;
       break;
     case 1:
-      rndColor = GREEN;
+      color = GREEN;
       break;
     case 2:
-      rndColor = BLUE;
+      color = BLUE;
       break; 
     case 3:
-      rndColor = CYAN;
+      color = CYAN;
       break;
     case 4:
-      rndColor = MAGENTA;
+      color = MAGENTA;
       break;
   }
-  return createShape((Tetromino)random(Z + 1), (ShapeColor)rndColor, player);
+  return color;
 }

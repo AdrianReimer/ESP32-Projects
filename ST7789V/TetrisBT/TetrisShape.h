@@ -16,7 +16,8 @@ class TetrisShape
 {
   public:
     Shape createShape(Tetromino tet, ShapeColor color, Player player);
-    Shape createRndShape(Player player);
+    Shape createRndShape(Player player, uint8_t *buffer);
+    ShapeColor numToColor(uint8_t num);
   private:
     void createIShape(Shape *iShape, Player player);
     void createLShape(Shape *lShape, Player player);
