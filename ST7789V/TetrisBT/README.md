@@ -11,5 +11,7 @@ A simple multiplayer tetris game with serial bluetooth communication between two
 * BluetoothSerial library
 
 
+## Schematic
+
 ![Example GUI with LittlevGL on ESP32](Schematic.png)
 
