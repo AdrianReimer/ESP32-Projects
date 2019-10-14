@@ -1,6 +1,14 @@
 #include "TetrisRot.h"
 #include "TetrisShape.h"
 
+/*
+ * Statically Coded Rotation shapes.
+ * No need for Explicit Math Function
+ *  - Code is final (no more Shapes or Rotations)
+ *  - sin() and cos () would be slower
+ *  - we have enough ROM
+ */
+
 
 void
 TetrisRot::rotShape(Shape *shape,

@@ -1,5 +1,5 @@
-#ifndef _TETRISBT_TETRISSHAPE
-#define _TETRISBT_TETRISSHAPE
+#ifndef _TETRISBT_TETRISSHAPE_H
+#define _TETRISBT_TETRISSHAPE_H
 
 #include <TFT_eSPI.h>
 #include "Tetris.h"

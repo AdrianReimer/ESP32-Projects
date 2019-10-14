@@ -1,5 +1,6 @@
 #include "TetrisShape.h"
 #include "TetrisWorld.h"
+#include "Game.h"
 
 
 Shape
@@ -206,11 +207,11 @@ TetrisShape::createZShape(Shape *zShape, Player player)
 Shape
 TetrisShape::createRndShape(Player player, uint8_t* buffer)
 {
-  long rndColor = random(5);
-  buffer[2] = rndColor;
+  long rndColor = random(TETROMINO_COLOR_CNT);
+  buffer[BUFFER_COLOR_IDX] = rndColor;
   rndColor = numToColor(rndColor);
-  Tetromino tet = (Tetromino)random(7);
-  buffer[1] = tet;
+  Tetromino tet = (Tetromino)random(TETROMINO_SHAPE_CNT);
+  buffer[BUFFER_SHAPE_IDX] = tet;
   return createShape(tet, (ShapeColor)rndColor, player);
 }
 

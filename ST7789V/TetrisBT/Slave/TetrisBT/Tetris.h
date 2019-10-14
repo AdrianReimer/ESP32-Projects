@@ -1,8 +1,10 @@
-#ifndef _TETRISBT_TETRIS
-#define _TETRISBT_TETRIS
+#ifndef _TETRISBT_TETRIS_H
+#define _TETRISBT_TETRIS_H
 
 #include <TFT_eSPI.h>
 
+#define TETROMINO_SHAPE_CNT 7
+#define TETROMINO_COLOR_CNT 5
 #define MAX_BOX_X 13
 #define MAX_BOX_Y 22
 #define SHAPE_DEST_X 5

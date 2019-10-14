@@ -19,5 +19,5 @@ loop()
   unsigned long t1 = millis();
   tetrisGame.updateGame();
   unsigned long t2 = millis();
-  delay((WAIT_TIME - (t2 - t1)) % WAIT_TIME);
+  delay((WAIT_TIME_MS - (t2 - t1)) % WAIT_TIME_MS);
 }

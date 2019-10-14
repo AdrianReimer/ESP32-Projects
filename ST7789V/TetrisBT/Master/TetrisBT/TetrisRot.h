@@ -1,5 +1,5 @@
-#ifndef _TETRISBT_TETRISROT
-#define _TETRISBT_TETRISROT
+#ifndef _TETRISBT_TETRISROT_H
+#define _TETRISBT_TETRISROT_H
 
 #include "Tetris.h"
 

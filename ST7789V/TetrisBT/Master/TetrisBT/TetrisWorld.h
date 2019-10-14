@@ -1,5 +1,5 @@
-#ifndef _TETRISBT_TETRISWORLD
-#define _TETRISBT_TETRISWORLD
+#ifndef _TETRISBT_TETRISWORLD_H
+#define _TETRISBT_TETRISWORLD_H
 
 #include <TFT_eSPI.h>
 #include "Tetris.h"

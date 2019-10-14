@@ -2,6 +2,8 @@
 #include "TetrisShape.h"
 
 #define SCORE_TIME -1
+#define WIN_TEXT ("You Won!")
+#define LOST_TEXT ("You Lost!")
 
 
 TetrisWorld::TetrisWorld(TFT_eSPI *tft)
@@ -19,8 +21,9 @@ TetrisWorld::initFrame()
     world.grid[i][11] = FRAME_COLOR;
     world.grid[i][22] = FRAME_COLOR;
   }
-  for(uint32_t i = 0; i <= MAX_BOX_Y; i++)
+  for(uint32_t i = 0; i <= MAX_BOX_Y; i++) {
     world.grid[0][i] = FRAME_COLOR;
+  }
 }
 
 void
@@ -28,10 +31,11 @@ TetrisWorld::drawWorld()
 {
   for(uint32_t x = 0; x <= MAX_BOX_X - 1; x++) {
     for(uint32_t y = 0; y <= MAX_BOX_Y; y++) {
-      if(world.grid[x][y])
+      if(world.grid[x][y]) {
         tft->fillRect(x * BOX_SCALE, y * BOX_SCALE, BOX_SCALE, BOX_SCALE, world.grid[x][y]);
-      else
+      } else {
         tft->fillRect(x * BOX_SCALE, y * BOX_SCALE, BOX_SCALE, BOX_SCALE, BACKGROUND_COLOR);
+      }
       tft->drawRect(x * BOX_SCALE, y * BOX_SCALE, BOX_SCALE, BOX_SCALE, FRAME_COLOR);
     }
   }
@@ -55,7 +59,7 @@ TetrisWorld::checkWorld()
         tft->fillScreen(TFT_BLACK);
         tft->setCursor(0, TFT_WIDTH / 2);
         tft->setRotation(1);
-        tft->print("You Lost!");
+        tft->print(LOST_TEXT);
         delay(SCORE_TIME);
     }
   }
@@ -66,7 +70,7 @@ TetrisWorld::checkWorld()
         tft->fillScreen(TFT_BLACK);
         tft->setCursor(0, TFT_WIDTH / 2);
         tft->setRotation(1);
-        tft->print("You Won!");
+        tft->print(WIN_TEXT);
         delay(SCORE_TIME);
     }
   }
@@ -89,20 +93,22 @@ TetrisWorld::checkHorizontal()
                 world.grid[x][y] = BACKGROUND_COLOR;
                 uint32_t y1 = y;
                 uint32_t y2 = y;
-                while(world.grid[x][--y1] == color)
+                while(world.grid[x][--y1] == color) {
                   world.grid[x][y1] = BACKGROUND_COLOR;
-                while(world.grid[x][++y2] == color)
+                } // clear horiz line
+                while(world.grid[x][++y2] == color) {
                   world.grid[x][y2] = BACKGROUND_COLOR;
+                }
                 shapeDestCnt++;
                 cleanWorld(y1, y2);
-            }
+             } // Horizontal line of same color Shapes spotted
           } else {
             colorCnt = 0;
             color = world.grid[x][y];
-          }
+          } // different color spotted
       } else {
           colorCnt = 0;
-      }
+      } // special Color spotted
     }
   }
   return shapeDestCnt;
@@ -125,20 +131,22 @@ TetrisWorld::checkVertical()
                 world.grid[x][y] = BACKGROUND_COLOR;
                 uint32_t x1 = x;
                 uint32_t x2 = x;
-                while(world.grid[--x1][y] == color)
+                while(world.grid[--x1][y] == color) {
                   world.grid[x1][y] = BACKGROUND_COLOR;
-                while(world.grid[++x2][y] == color)
+                } // clear verti line
+                while(world.grid[++x2][y] == color) {
                   world.grid[x2][y] = BACKGROUND_COLOR;
+                }
                 shapeDestCnt++;
                 cleanWorld(y - 1, y + 1);
-            }
+            } // Vertical line of same color Shapes spotted
           } else {
             colorCnt = 0;
             color = world.grid[x][y];
-          }
+          } // different color spotted
       } else {
           colorCnt = 0;
-      }
+      } // special Color spotted
     }
   }
   return shapeDestCnt;
@@ -153,8 +161,9 @@ TetrisWorld::cleanWorld(uint32_t y1, uint32_t y2)
         world.grid[x][y] != FRAME_COLOR) {
           if(world.grid[x - 1][y] == BACKGROUND_COLOR) {
             uint32_t x1 = x - 1;
-            while(world.grid[x1][y] == BACKGROUND_COLOR)
+            while(world.grid[x1][y] == BACKGROUND_COLOR) {
               x1--;
+            }
             world.grid[++x1][y] = world.grid[x][y];
             world.grid[x][y] = BACKGROUND_COLOR;
           }
